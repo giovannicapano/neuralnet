@@ -122,14 +122,6 @@ while torch.sum(state_)!=0:
     while state_[m]<0:  
       m=np.random.randint(0,nspins_)
     state_[m]=-1
- 
-print(torch.sum(state_))
-
-for t in range(100):
-       flipp=torch.randint(0,nspins_,(1,))
-       s=flipp[0].int()
-       if(model.Prob(state_,flipp)>rand.uniform(0,1)):
-        state_[s]=state_[s]*-1
 
 def loop(mel,state_,model):
    en=Variable(torch.zeros(1), requires_grad=True)
@@ -180,8 +172,8 @@ for s in range(1000):
     print(g['lr'])"""
    optimizer.step()
 
-"""print(enn)
-print(sum(enn)/40000)
+print(enn) 
+"""print(sum(enn)/40000)
 n_blocks=50
 blocksize=np.intc(len(enn)/n_blocks)
 enmean_unblocked=0
